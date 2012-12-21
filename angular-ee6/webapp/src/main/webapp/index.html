@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" ng-app="project">
+<head>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-resource.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
+
+    <script src="js/module/country.js"></script>
+    <script src="js/module/state.js"></script>
+    <script src="js/module/address.js"></script>
+    <script src="js/address.js"></script>
+
+
+    <style type="text/css">
+            /*form span.help-inline-true {*/
+            /*color: #FA787E;*/
+            /*}*/
+        form input.ng-invalid.ng-dirty {
+            border-color: #FA787E;
+        }
+
+        form input.ng-valid.ng-dirty {
+            border-color: #78FA89;
+        }
+
+        form label {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div ng-controller="ListAddressController" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span5">
+            <h2>New Addresses</h2>
+            <form name="myForm" ng-submit="addAddress()">
+                <label for="description">Description</label><input id="description" name="description" type="text" ng-model="address.description" required ng-minlength="2" ng-maxlength="64">
+                <span ng-show="myForm.description.$error.required" class="help-inline">Required</span>
+                <span ng-show="myForm.description.$error.minlength || myForm.description.$error.maxlength" class="help-inline ng-dirty">Must be at least 2 characters and less than 64 characters</span>
+                <br/>
+                <label for="lineOne">Line One</label><input id="lineOne" name="lineOne" type="text" ng-model="address.lineOne" required>
+                <span ng-show="myForm.lineOne.$error.required" class="help-inline">Required</span>
+                <br/>
+                <label for="lineTwo">Line Two</label><input id="lineTwo" name="lineTwo" type="text" ng-model="address.lineTwo">
+                <span ng-show="myForm.lineTwo.$error.required" class="help-inline">Required</span>
+                <br/>
+                <label for="city">City</label><input id="city" name="city" type="text" ng-model="address.city" required>
+                <span ng-show="myForm.city.$error.required" class="help-inline">Required</span>
+                <br/>
+                <label for="province">State</label><select id="province" name="province" ng-model="address.province" ng-options="p.name for p in provinces | orderBy:'id'" required></select>
+                <span ng-show="myForm.state.$error.required" class="help-inline">Required</span>
+                <br/>
+                <label for="postCode">Post Code</label><input id="postCode" name="postCode" type="text" ng-model="address.postCode" required>
+                <span ng-show="myForm.postCode.$error.required" class="help-inline">Required</span>
+                <br/>
+                <label for="country">Country</label><select id="country" name="country" ng-model="address.country" ng-options="c.name for c in countries | orderBy:'id'" required></select>
+                <span ng-show="myForm.country.$error.required" class="help-inline">Required</span>
+                <br/>
+
+                <input class="btn-primary" type="submit" value="add" ng-disabled="myForm.$invalid">
+            </form>
+            <h3>Addresses</h3>
+            <ol>
+                <li ng-repeat="address in addresses">
+                    JSON: {{address}}<br/>
+                    <address>
+                        <strong>{{address.description}}</strong><br/>
+                        {{address.lineOne}}, {{address.lineTwo}}<br/>
+                        {{address.city}}, {{address.state.name}} {{address.zip}}<br/>
+                        {{address.country.name}}
+                    </address>
+                </li>
+            </ol>
+        </div>
+        <div class="span7">
+            <h3>Model and Form state</h3>
+            <pre>
+myForm.description.$valid = {{myForm.description.$valid}}
+myForm.description.$error = {{myForm.description.$error}}
+myForm.description.$dirty = {{myForm.description.$dirty}}
+myForm.lineOne.$valid = {{myForm.lineOne.$valid}}
+myForm.lineOne.$error = {{myForm.lineOne.$error}}
+myForm.lineOne.$dirty = {{myForm.lineOne.$dirty}}
+myForm.lineTwo.$valid = {{myForm.lineTwo.$valid}}
+myForm.lineTwo.$error = {{myForm.lineTwo.$error}}
+myForm.lineTwo.$dirty = {{myForm.lineTwo.$dirty}}
+myForm.city.$valid = {{myForm.city.$valid}}
+myForm.city.$error = {{myForm.city.$error}}
+myForm.city.$dirty = {{myForm.city.$dirty}}
+myForm.province.$valid = {{myForm.province.$valid}}
+myForm.province.$error = {{myForm.province.$error}}
+myForm.province.$dirty = {{myForm.province.$dirty}}
+myForm.postCode.$valid = {{myForm.postCode.$valid}}
+myForm.postCode.$error = {{myForm.postCode.$error}}
+myForm.postCode.$dirty = {{myForm.postCode.$dirty}}
+myForm.country.$valid = {{myForm.country.$valid}}
+myForm.country.$error = {{myForm.country.$error}}
+myForm.country.$dirty = {{myForm.country.$dirty}}
+
+myForm.$valid = {{myForm.$valid}}
+myForm.$error = {{myForm.$error}}
+
+address = {{address}}
+            </pre>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="" />
+        <datasource-mapping>
+          <factory-entry name="angular-ee6" value="179dc0aa-2c16-4ce8-83ba-920334cf80db" />
+        </datasource-mapping>
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.hibernate:hibernate-validator:4.2.0.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.enterprise:cdi-api:1.0-SP4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec:1.0.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.intellij:annotations:7.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:0.11.6" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:jcl-over-slf4j:1.6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:log4j-over-slf4j:1.6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:jul-to-slf4j:1.6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: ch.qos.logback:logback-classic:1.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: ch.qos.logback:logback-core:1.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock:2.5.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-junit4:2.5.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit-dep:4.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.junit:arquillian-junit-container:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.junit:arquillian-junit-core:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.test:arquillian-test-spi:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.core:arquillian-core-spi:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.core:arquillian-core-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.test:arquillian-test-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-test-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-test-spi:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-spi:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.config:arquillian-config-api:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.config:arquillian-config-impl-base:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0-alpha-3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap:shrinkwrap-api:1.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.core:arquillian-core-impl-base:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.test:arquillian-test-impl-base:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-impl-base:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-test-impl-base:1.0.1.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap:shrinkwrap-spi:1.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.0.1.Final" level="project" />
+  </component>
+</module>
+
