@@ -3,8 +3,6 @@ package com.github.benwhitehead.tutorials.sudoku;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,17 +16,25 @@ import static org.fest.assertions.api.Assertions.assertThat;
  * @author Ben Whitehead
  */
 public class SudokuSolverTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SudokuSolverTest.class);
 
     @Test
-    public void solve() throws Exception {
+    public void solve_1() throws Exception {
         final int[][] puzzle = getMatrixFromResourcePath("/start-1.txt");
         final int[][] solution = getMatrixFromResourcePath("/solution-1.txt");
         final SudokuSolver solver = new SudokuSolver(puzzle);
-        LOGGER.info("solver = {}", solver);
-        LOGGER.info("\n{}", solver.getOriginalPuzzleAsString());
-        final int[][] solve = solver.solve();
-        assertThat(solve).isEqualTo(solution);
+        assertThat(solver.solve()).isEqualTo(solution);
+    }
+
+    /**
+     * puzzle based off: http://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html challenge2
+     * @throws Exception
+     */
+    @Test
+    public void solve_difficult() throws Exception {
+        final int[][] puzzle = getMatrixFromResourcePath("/start-difficult.txt");
+        final int[][] solution = getMatrixFromResourcePath("/solution-difficult.txt");
+        final SudokuSolver solver = new SudokuSolver(puzzle);
+        assertThat(solver.solve()).isEqualTo(solution);
     }
 
     private int[][] getMatrixFromResourcePath(final String resourcePath) throws IOException {

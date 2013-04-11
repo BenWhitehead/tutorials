@@ -7,6 +7,8 @@ import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+
 /**
  * @author Ben Whitehead
  */
@@ -39,16 +41,24 @@ public class SudokuSolver {
                     "{}\n" +
                     "{}", originalPuzzle);
         final Stopwatch stopwatch = new Stopwatch().start();
+
+        int[][] progress = null;
         while (!sudokuPuzzle.isSolved()) {
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     final CellValue cellValue = sudokuPuzzle.getCellValue(i, j);
                     if (!cellValue.isSolved()) {
                         final CellValue newValueForCell = getPossibleValueForCell(i, j);
-                        LOGGER.debug("Setting cell ({}, {}) value to: {}", new Object[]{i, j, newValueForCell});
+                        LOGGER.trace("Setting cell ({}, {}) value to: {}", new Object[]{i, j, newValueForCell});
                         sudokuPuzzle.setCellValue(i, j, newValueForCell);
                     }
                 }
+            }
+            final int[][] newProgress = sudokuPuzzle.getSolution(false);
+            if (Arrays.deepEquals(progress, newProgress)) {
+                throw new IllegalStateException("Unable to make any progress on solving the puzzle.");
+            } else {
+                progress = newProgress;
             }
             LOGGER.debug("Solution Progress:\n" +
                         "{}\n" +
@@ -59,7 +69,9 @@ public class SudokuSolver {
                         "{}\n" +
                         "{}\n" +
                         "{}\n" +
-                        "{}", sudokuPuzzle.getSolution(false));
+                        "{}", progress
+            );
+
         }
         stopwatch.stop();
         final int[][] solution = sudokuPuzzle.getSolution();
@@ -77,16 +89,16 @@ public class SudokuSolver {
     }
 
     public CellValue getPossibleValueForCell(final int row, final int col) {
-        LOGGER.debug("getPossibleValueForCell(row : {}, col : {})", row, col);
+        LOGGER.trace("getPossibleValueForCell(row : {}, col : {})", row, col);
         final PossibleValue possibleValueForRow = getPossibleValueForRow(row);
-        LOGGER.debug("possibleValueForRow = {}", possibleValueForRow);
+        LOGGER.trace("possibleValueForRow = {}", possibleValueForRow);
         final PossibleValue possibleValueForColumn = getPossibleValueForColumn(col);
-        LOGGER.debug("possibleValueForColumn = {}", possibleValueForColumn);
+        LOGGER.trace("possibleValueForColumn = {}", possibleValueForColumn);
         final PossibleValue possibleValueForSubSquare = getPossibleValueForSubSquare(row / 3, col / 3);
-        LOGGER.debug("possibleValueForSubSquare = {}", possibleValueForSubSquare);
+        LOGGER.trace("possibleValueForSubSquare = {}", possibleValueForSubSquare);
         final Sets.SetView<Integer> temp = Sets.intersection(possibleValueForRow.getValues(), possibleValueForColumn.getValues());
         final ImmutableSet<Integer> intersection = Sets.intersection(temp, possibleValueForSubSquare.getValues()).immutableCopy();
-        LOGGER.debug("intersection = {}", intersection);
+        LOGGER.trace("intersection = {}", intersection);
         return CellValueFactory.getCellValueForValuesSet(intersection);
     }
 
