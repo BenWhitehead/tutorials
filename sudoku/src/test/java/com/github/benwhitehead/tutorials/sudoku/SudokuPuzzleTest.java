@@ -172,4 +172,21 @@ public class SudokuPuzzleTest {
         assertThat(puzzle.isSubSquareSolved(0, 0)).isTrue();
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void getSolution_unsolved() throws Exception {
+        final SudokuPuzzle puzzle = new SudokuPuzzle(
+                new int[][]{
+                        {1, 4, 7, 0, 0, 0, 0, 0, 0},
+                        {2, 5, 8, 0, 0, 0, 0, 0, 0},
+                        {3, 6, 9, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0}
+                }
+        );
+        puzzle.getSolution();
+    }
 }

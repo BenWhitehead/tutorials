@@ -24,6 +24,33 @@ public class SudokuPuzzle implements Puzzle {
         }
     }
 
+    public int[][] getSolution() {
+        return getSolution(true);
+    }
+
+    public int[][] getSolution(final boolean failIfUnsolved) {
+        final int[][] solution = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                final CellValue cellValue = possibleSolution[i][j];
+                if (cellValue instanceof DefinedValue) {
+                    final DefinedValue definedValue = (DefinedValue) cellValue;
+                    solution[i][j] = definedValue.getValue();
+                } else if (cellValue instanceof SolvedValue) {
+                    final SolvedValue solvedValue = (SolvedValue) cellValue;
+                    solution[i][j] = solvedValue.getValue();
+                } else {
+                    if (failIfUnsolved) {
+                        throw new IllegalStateException(String.format("Puzzle has not yet been solved, unable to provide solution. [cell (%d, %d)]", i, j));
+                    } else {
+                        solution[i][j] = 0;
+                    }
+                }
+            }
+        }
+        return solution;
+    }
+
     @Override
     public boolean isSolved() {
         for (int i = 0; i < possibleSolution.length; i++) {
@@ -74,4 +101,14 @@ public class SudokuPuzzle implements Puzzle {
         }
         return true;
     }
+
+    public CellValue getCellValue(final int row, final int col) {
+        return possibleSolution[row][col];
+    }
+
+    public void setCellValue(final int row, final int col, final CellValue value) {
+        /*todo add validation to prevent changing of defined values*/
+        possibleSolution[row][col] = value;
+    }
+
 }

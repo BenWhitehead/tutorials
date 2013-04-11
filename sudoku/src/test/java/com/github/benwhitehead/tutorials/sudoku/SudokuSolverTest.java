@@ -21,11 +21,14 @@ public class SudokuSolverTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(SudokuSolverTest.class);
 
     @Test
-    public void name() throws Exception {
-        final int[][] matrix = getMatrixFromResourcePath("/start-1.txt");
-        final SudokuSolver solver = new SudokuSolver(matrix);
+    public void solve() throws Exception {
+        final int[][] puzzle = getMatrixFromResourcePath("/start-1.txt");
+        final int[][] solution = getMatrixFromResourcePath("/solution-1.txt");
+        final SudokuSolver solver = new SudokuSolver(puzzle);
         LOGGER.info("solver = {}", solver);
         LOGGER.info("\n{}", solver.getOriginalPuzzleAsString());
+        final int[][] solve = solver.solve();
+        assertThat(solve).isEqualTo(solution);
     }
 
     private int[][] getMatrixFromResourcePath(final String resourcePath) throws IOException {
@@ -34,7 +37,7 @@ public class SudokuSolverTest {
         final Splitter splitter = Splitter.on(" ");
         final int[][] matrix = new int[9][9];
         for (int i = 0; i < 9; i++) {
-            final String line = reader.readLine();
+            final String line = reader.readLine().trim();
             final List<String> strings = Lists.newArrayList(splitter.split(line));
             assertThat(strings.size()).isEqualTo(9);
             for (int j = 0; j < strings.size(); j++) {
