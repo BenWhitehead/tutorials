@@ -1,14 +1,17 @@
 package com.github.benwhitehead.tutorials.sudoku;
 
+import lombok.ToString;
+
 /**
  * @author Ben Whitehead
  */
+@ToString
 public class SudokuPuzzle implements Puzzle {
 
     private CellValue[][] possibleSolution;
 
     public SudokuPuzzle(int[][] puzzle) {
-        possibleSolution = new CellValue[9][9];
+        this();
         for (int i = 0; i < puzzle.length; i++) {
             int[] ints = puzzle[i];
             for (int j = 0; j < ints.length; j++) {
@@ -22,6 +25,10 @@ public class SudokuPuzzle implements Puzzle {
                 possibleSolution[i][j] = value;
             }
         }
+    }
+
+    private SudokuPuzzle() {
+        possibleSolution = new CellValue[9][9];
     }
 
     public int[][] getSolution() {
@@ -111,4 +118,20 @@ public class SudokuPuzzle implements Puzzle {
         possibleSolution[row][col] = value;
     }
 
+    public SudokuPuzzle cloneKeepingType() {
+        final SudokuPuzzle clone = new SudokuPuzzle();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                CellValue cellValue = this.possibleSolution[i][j];
+                // All other cell types are immutable,
+                // We only need to account for cells of PossibleValue.
+                if (cellValue instanceof PossibleValue) {
+                    final PossibleValue possibleValue = (PossibleValue) cellValue;
+                    cellValue = new PossibleValue(possibleValue.getValues());
+                }
+                clone.possibleSolution[i][j] = cellValue;
+            }
+        }
+        return clone;
+    }
 }

@@ -1,0 +1,16 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} %-5level [%25.25thread] %60.60logger{36} - %msg%n</pattern>-->
+            <!--<pattern>%-12marker%-5level - %msg%n</pattern>-->
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.github.benwhitehead.tutorials.sudoku" level="info"/>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

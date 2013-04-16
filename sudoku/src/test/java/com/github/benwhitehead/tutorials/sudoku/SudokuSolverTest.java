@@ -18,6 +18,13 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class SudokuSolverTest {
 
     @Test
+    public void puzzle() throws Exception {
+        final int[][] puzzle = getMatrixFromResourcePath("/puzzle.txt");
+        final SudokuSolver solver = new SudokuSolver(puzzle);
+        solver.solve();
+    }
+
+    @Test
     public void solve_1() throws Exception {
         final int[][] puzzle = getMatrixFromResourcePath("/start-1.txt");
         final int[][] solution = getMatrixFromResourcePath("/solution-1.txt");

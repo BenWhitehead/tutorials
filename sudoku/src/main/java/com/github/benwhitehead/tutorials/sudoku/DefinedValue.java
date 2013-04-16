@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 public class DefinedValue implements CellValue {
 
-    private int value;
+    private final int value;
 
     public DefinedValue(final int value) {
         this.value = value;
